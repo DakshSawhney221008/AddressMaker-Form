@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Real Estate Inquiry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="thank-you-container">
+            <div class="logo-container">
+                <img src="Adressmakerlogo.jpeg" alt="Address Maker Logo" class="logo">
+            </div>
+            
+            <div class="thank-you-icon success-checkmark">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <div class="thank-you-message">
+                <h1>Thank You for Your Inquiry!</h1>
+                <p>Your real estate inquiry has been successfully submitted. Our team will review your requirements and get back to you shortly.</p>
+            </div>
+            
+            <div class="share-options">
+                <h3 class="share-title">Share this form with others who might need it</h3>
+                
+                <div class="share-buttons">
+                    <div class="share-button instagram" onclick="openInstagram()">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="share-button twitter" onclick="shareOnTwitter()">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="share-button whatsapp" onclick="shareOnWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-button email" onclick="shareViaEmail()">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                
+                <div class="link-container">
+                    <input type="text" class="form-link" id="formLink" value="https://yourdomain.com/real-estate-form" readonly>
+                    <button class="copy-button" onclick="copyFormLink()">Copy Link</button>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="index.html" class="action-button secondary-button">Back to Form</a>
+                <a href="#" class="action-button primary-button" onclick="window.location.href='index.html'">Submit Another Inquiry</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copied-message" id="copiedMessage">Link copied to clipboard!</div>
+    
+    <script>
+        function openInstagram() {
+            // Instagram doesn't support direct URL sharing via web,
+            // so we'll just open Instagram and let users share manually
+            window.open('https://www.instagram.com/', '_blank');
+            
+            // Show additional instructions
+            alert('To share on Instagram:\n1. Copy the form link using the "Copy Link" button below\n2. Share it in your Instagram Story or Direct Message');
+        }
+        
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.origin + '/index.html');
+            const text = encodeURIComponent('Check out this real estate inquiry form:');
+            window.open('https://twitter.com/intent/tweet?text=' + text + '&url=' + url, '_blank');
+        }
+        
+        function shareOnWhatsApp() {
+            const url = encodeURIComponent(window.location.origin + '/index.html');
+            const text = encodeURIComponent('Check out this real estate inquiry form: ');
+            window.open('https://wa.me/?text=' + text + url, '_blank');
+        }
+        
+        function shareViaEmail() {
+            const url = window.location.origin + '/index.html';
+            const subject = encodeURIComponent('Real Estate Inquiry Form');
+            const body = encodeURIComponent('I thought you might find this real estate inquiry form useful: ' + url);
+            window.open('mailto:?subject=' + subject + '&body=' + body, '_blank');
+        }
+        
+        function copyFormLink() {
+            const copyText = document.getElementById("formLink");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            
+            const message = document.getElementById("copiedMessage");
+            message.classList.add("show");
+            
+            setTimeout(function() {
+                message.classList.remove("show");
+            }, 2000);
+        }
+    </script>
+</body>
+</html> 

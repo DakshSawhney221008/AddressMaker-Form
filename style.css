@@ -1,0 +1,577 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.form-header {
+    background: linear-gradient(135deg, rgba(124,18,40,1), rgba(124,18,40,0.8));
+    color: white;
+    padding: 25px 40px;
+    text-align: center;
+}
+
+.form-header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.form-header p {
+    opacity: 0.9;
+    font-size: 16px;
+}
+
+.form-section {
+    padding: 30px 40px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.form-section h2 {
+    color: rgba(124,18,40,1);
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.form-section h2 i {
+    margin-right: 10px;
+    color: rgba(124,18,40,0.8);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: rgba(124,18,40,0.8);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-option, .checkbox-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-option input, .checkbox-option input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.conditional-section {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    border-left: 3px solid rgba(124,18,40,0.8);
+}
+
+.form-footer {
+    padding: 30px 40px;
+    text-align: center;
+}
+
+.form-footer p {
+    margin-bottom: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, rgba(124,18,40,1), rgba(124,18,40,0.8));
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Thank You Page Styles */
+.thank-you-container {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.thank-you-icon {
+    font-size: 80px;
+    color: rgba(124,18,40,1);
+    margin-bottom: 20px;
+}
+
+.thank-you-message h1 {
+    color: rgba(124,18,40,1);
+    margin-bottom: 15px;
+}
+
+.thank-you-message p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.share-options {
+    margin-top: 40px;
+}
+
+.share-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.share-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.share-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.instagram {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+.twitter {
+    background-color: #1DA1F2;
+}
+
+.whatsapp {
+    background-color: #25D366;
+}
+
+.email {
+    background-color: #D44638;
+}
+
+.copy-link {
+    background-color: #7f7f7f;
+}
+
+.link-container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-link {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    padding-right: 120px;
+}
+
+.copy-button {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    padding: 0 15px;
+    background: linear-gradient(135deg, rgba(124,18,40,1), rgba(124,18,40,0.8));
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+    background: rgba(124,18,40,1);
+}
+
+.actions {
+    margin-top: 40px;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 0 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.primary-button {
+    background: linear-gradient(135deg, rgba(124,18,40,1), rgba(124,18,40,0.8));
+    color: white;
+}
+
+.secondary-button {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.success-checkmark {
+    animation: bounceIn 0.8s forwards;
+}
+
+.copied-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.copied-message.show {
+    opacity: 1;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.2); }
+    80% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.form-section {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.form-section:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.form-section:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-section, .thank-you-container {
+        padding: 20px;
+    }
+    
+    .col-2 {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .radio-group, .checkbox-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-header h1, .thank-you-message h1 {
+        font-size: 24px;
+    }
+    
+    .share-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .actions .action-button {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+}
+
+/* Only adding the logo-related styles to the existing CSS file */
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Custom radio and checkbox styling */
+.radio-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    vertical-align: middle;
+}
+
+.radio-option input[type="radio"] {
+    border-radius: 50%;
+}
+
+.radio-option input[type="radio"]:checked,
+.checkbox-option input[type="checkbox"]:checked {
+    background-color: rgba(124,18,40,1);
+    border-color: rgba(124,18,40,1);
+}
+
+.radio-option input[type="radio"]:checked::before,
+.checkbox-option input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    display: block;
+}
+
+.radio-option input[type="radio"]:checked::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.checkbox-option input[type="checkbox"]:checked::before {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.radio-option:hover input[type="radio"],
+.checkbox-option:hover input[type="checkbox"] {
+    border-color: rgba(124,18,40,0.6);
+}
+
+/* Input focus styling */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(124,18,40,0.8) !important;
+    box-shadow: 0 0 0 2px rgba(124,18,40,0.2);
+    outline: none;
+}
+
+/* Error message styling */
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-field {
+    border-color: #d9534f !important;
+    background-color: rgba(217, 83, 79, 0.05);
+}
+
+/* Input fields with validation errors */
+input.error-field,
+select.error-field,
+textarea.error-field {
+    border-color: #d9534f !important;
+}
+
+input.error-field:focus,
+select.error-field:focus,
+textarea.error-field:focus {
+    box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.2);
+}
+
+/* Valid field styling */
+.valid-field {
+    border-color: #5cb85c !important;
+    background-color: rgba(92, 184, 92, 0.05);
+}
+
+/* Custom date picker styling */
+input[type="date"] {
+    position: relative;
+}
+
+/* Style the date picker icon and dropdown */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: rgba(124,18,40,0.1);
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    background-color: rgba(124,18,40,0.2);
+}
+
+/* Style the actual calendar popup - this is browser-specific and limited */
+input[type="date"]:focus {
+    color: rgba(124,18,40,1);
+}
+
+/* Add a custom appearance to the date input */
+input[type="date"] {
+    padding-right: 30px; /* Make room for the custom calendar icon */
+}
+
+/* For browsers that support it, try to customize the date picker dialog */
+::-webkit-datetime-edit-fields-wrapper { 
+    color: #333;
+}
+::-webkit-datetime-edit-text { 
+    color: rgba(124,18,40,0.8);
+    padding: 0 2px; 
+}
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-year-field { 
+    color: #333;
+}
+::-webkit-inner-spin-button { 
+    display: none;
+}
+
+/* Style for selected date */
+input[type="date"]:valid {
+    border-color: rgba(124,18,40,0.6);
+}
+
+/* Create a more custom date input for browsers that support ::after */
+.date-input-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.date-input-container::after {
+    content: "\f073"; /* Calendar icon from FontAwesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: rgba(124,18,40,1);
+    pointer-events: none; /* Allow clicking through to the actual input */
+}
+
+.date-input-container input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0; /* Hide the default calendar icon */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}

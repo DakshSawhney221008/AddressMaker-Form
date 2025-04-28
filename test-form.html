@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #log {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            background-color: #f8f8f8;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Form Submission</h1>
+    
+    <div>
+        <button id="checkServer">Check Server Status</button>
+        <span id="serverStatus">Unknown</span>
+    </div>
+    
+    <form id="testForm">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" value="Test User" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="test@example.com" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="1234567890" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div id="result" style="margin-top: 20px;"></div>
+    
+    <div id="log">
+        <div>Debug log:</div>
+    </div>
+    
+    <script>
+        // Add to debug log
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `<div>[${time}] ${message}</div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+        
+        // Check server status
+        document.getElementById('checkServer').addEventListener('click', function() {
+            checkServerStatus();
+        });
+        
+        function checkServerStatus() {
+            log('Checking server status...');
+            document.getElementById('serverStatus').textContent = 'Checking...';
+            
+            fetch('https://real-estate-form-api.loca.lt/', {
+                method: 'GET',
+                mode: 'cors'
+            })
+            .then(response => {
+                log(`Server responded with status: ${response.status}`);
+                return response.text();
+            })
+            .then(text => {
+                document.getElementById('serverStatus').textContent = `Online (${text})`;
+                log(`Server response: ${text}`);
+            })
+            .catch(error => {
+                document.getElementById('serverStatus').textContent = 'Offline';
+                log(`Server error: ${error.message}`);
+            });
+        }
+        
+        // Check server on page load
+        checkServerStatus();
+        
+        // Handle form submission
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Submitting...</p>';
+            log('Form submission started');
+            
+            const formData = new FormData(this);
+            
+            // Log form data
+            log('Form data:');
+            for (let pair of formData.entries()) {
+                log(`${pair[0]}: ${pair[1]}`);
+            }
+            
+            // Direct POST to server
+            log('Sending POST request to https://real-estate-form-api.loca.lt/submit');
+            fetch('https://real-estate-form-api.loca.lt/submit', {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            })
+            .then(response => {
+                log(`Response status: ${response.status}`);
+                return response.text().then(text => {
+                    log(`Response text: ${text}`);
+                    return { text, status: response.status, ok: response.ok };
+                });
+            })
+            .then(result => {
+                if (result.ok) {
+                    resultDiv.innerHTML = `<p style="color: green;">Success! Response: ${result.text}</p>`;
+                    log('Submission successful');
+                } else {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${result.status} - ${result.text}</p>`;
+                    log(`Submission failed with status ${result.status}`);
+                }
+            })
+            .catch(error => {
+                log(`Error: ${error.message}`);
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            });
+        });
+    </script>
+</body>
+</html> 

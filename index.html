@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Inquiry Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="submit.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="realEstateForm" novalidate method="POST">
+            <div class="form-header">
+                <div class="logo-container">
+                    <img src="Adressmakerlogo.jpeg" alt="Address Maker Logo" class="logo">
+                </div>
+                <h1>Real Estate Inquiry Form</h1>
+                <p>Please fill out this form to help us assist you better with your real estate needs.</p>
+            </div>
+            <!-- Personal Information Section -->
+            <div class="form-section">
+                <h2><i class="fas fa-user"></i> Personal Information</h2>
+                <div class="form-group">
+                    <label for="fullName">Full Name*</label>
+                    <input type="text" id="fullName" name="fullName" required pattern="^[A-Za-z\s.'-]{2,50}$" title="Please enter a valid name (2-50 characters)">
+                    <div class="error-message" id="fullName-error">Please enter a valid name (2-50 characters, letters only)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address*</label>
+                    <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                    <div class="error-message" id="email-error">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number*</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number" maxlength="10">
+                    <div class="error-message" id="phone-error">Please enter a valid 10-digit phone number</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Contact Method*</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="contactMethod" value="Phone" required>
+                            <span>Phone</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="contactMethod" value="Email">
+                            <span>Email</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="contactMethod" value="WhatsApp">
+                            <span>WhatsApp</span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="contactMethod-error">Please select a preferred contact method</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Are you the buyer/renter or representing someone else?*</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="representation" value="Self" required>
+                            <span>I am the buyer/renter</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="representation" value="Other">
+                            <span>Representing someone else</span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="representation-error">Please select an option</div>
+                </div>
+            </div>
+
+            <!-- Inquiry Details Section -->
+            <div class="form-section">
+                <h2><i class="fas fa-clipboard-list"></i> Inquiry Details</h2>
+                
+                <div class="form-group">
+                    <label>Type of Inquiry*</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="inquiryType" value="Buy" required>
+                            <span>Buy</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="inquiryType" value="Rent">
+                            <span>Rent</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="inquiryType" value="Sell">
+                            <span>Sell</span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="inquiryType-error">Please select an inquiry type</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyType">Property Type*</label>
+                    <select id="propertyType" name="propertyType" required>
+                        <option value="">-- Select Property Type --</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Plot">Plot</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="error-message" id="propertyType-error">Please select a property type</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Preferred Location(s)*</label>
+                    <input type="text" id="location" name="location" required minlength="2" maxlength="100">
+                    <div class="error-message" id="location-error">Please enter a valid location</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Budget Range*</label>
+                    <input type="text" id="budget" name="budget" placeholder="e.g., $100,000 - $300,000" required pattern="[\$£€]?[\d,\s]+([\-\–][\$£€]?[\d,\s]+)?" title="Please enter a valid budget range">
+                    <div class="error-message" id="budget-error">Please enter a valid budget range</div>
+                </div>
+                
+                <div class="form-group col-2">
+                    <div>
+                        <label for="bedrooms">Number of Bedrooms</label>
+                        <select id="bedrooms" name="bedrooms">
+                            <option value="">-- Select --</option>
+                            <option value="Studio">Studio</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="bathrooms">Number of Bathrooms</label>
+                        <select id="bathrooms" name="bathrooms">
+                            <option value="">-- Select --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Do you require parking?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="parking" value="Yes">
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="parking" value="No">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Furnishing Preference</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="furnishing" value="Furnished">
+                            <span>Furnished</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="furnishing" value="Semi-Furnished">
+                            <span>Semi-Furnished</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="furnishing" value="Unfurnished">
+                            <span>Unfurnished</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="moveInDate">Desired Move-in / Selling Date</label>
+                    <div class="date-input-container">
+                        <input type="date" id="moveInDate" name="moveInDate" min="">
+                    </div>
+                </div>
+                
+                <div class="conditional-section" id="sellerQuestions">
+                    <div class="form-group">
+                        <label>Are you currently living at the property?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="livingAtProperty" value="Yes">
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="livingAtProperty" value="No">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Is the property under loan/mortgage?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="propertyLoan" value="Yes">
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="propertyLoan" value="No">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Preferences Section -->
+            <div class="form-section">
+                <h2><i class="fas fa-star"></i> Additional Preferences</h2>
+                
+                <div class="form-group">
+                    <label for="amenities">Any specific amenities you want?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="amenities" value="Gym">
+                            <span>Gym</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="amenities" value="Swimming Pool">
+                            <span>Swimming Pool</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="amenities" value="Garden">
+                            <span>Garden</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="amenities" value="Security">
+                            <span>Security</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="amenities" value="Parking">
+                            <span>Parking</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Are you pre-approved for a home loan?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="loanApproval" value="Yes">
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="loanApproval" value="No">
+                            <span>No</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="loanApproval" value="Planning to Apply">
+                            <span>Planning to Apply</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Have you worked with a real estate agent before?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="agentExperience" value="Yes">
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="agentExperience" value="No">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additionalNotes">Any additional notes, questions, or requirements?</label>
+                    <textarea id="additionalNotes" name="additionalNotes" rows="4" maxlength="500"></textarea>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <p>* Required fields</p>
+                <button type="submit" class="submit-btn">Submit Inquiry</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Set minimum date for moveInDate to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('moveInDate').setAttribute('min', today);
+            
+            // Phone number input validation - only allow numbers
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                if (e.target.value.length > 10) {
+                    e.target.value = e.target.value.slice(0, 10);
+                }
+            });
+        });
+        
+        // Show/hide seller questions based on inquiry type
+        document.querySelectorAll('input[name="inquiryType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const sellerQuestions = document.getElementById('sellerQuestions');
+                if (this.value === 'Sell') {
+                    sellerQuestions.style.display = 'block';
+                } else {
+                    sellerQuestions.style.display = 'none';
+                }
+            });
+        });
+        
+        // Validate individual form fields
+        function validateField(field) {
+            const errorElement = document.getElementById(`${field.id}-error`);
+            if (!errorElement) return true; // Skip if no error element exists
+            
+            let isValid = true;
+            
+            // Clear previous validation states
+            field.classList.remove('error-field', 'valid-field');
+            errorElement.style.display = 'none';
+            
+            // Check required fields
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                field.classList.add('error-field');
+                errorElement.style.display = 'block';
+                errorElement.textContent = 'This field is required';
+                isValid = false;
+            }
+            // Check pattern validation
+            else if (field.hasAttribute('pattern') && field.value) {
+                const pattern = new RegExp(field.getAttribute('pattern'));
+                if (!pattern.test(field.value)) {
+                    field.classList.add('error-field');
+                    errorElement.style.display = 'block';
+                    errorElement.textContent = field.getAttribute('title') || 'Please enter a valid value';
+                    isValid = false;
+                }
+            }
+            
+            // Check email validation
+            if (field.type === 'email' && field.value) {
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(field.value)) {
+                    field.classList.add('error-field');
+                    errorElement.style.display = 'block';
+                    errorElement.textContent = 'Please enter a valid email address';
+                    isValid = false;
+                }
+            }
+            
+            // Check phone validation
+            if (field.id === 'phone' && field.value) {
+                if (!/^[0-9]{10}$/.test(field.value)) {
+                    field.classList.add('error-field');
+                    errorElement.style.display = 'block';
+                    errorElement.textContent = 'Please enter a valid 10-digit phone number';
+                    isValid = false;
+                }
+            }
+            
+            // Add valid class if everything is ok
+            if (isValid && field.value) {
+                field.classList.add('valid-field');
+            }
+            
+            return isValid;
+        }
+        
+        // Validate radio button groups
+        function validateRadioGroup(name) {
+            const radioButtons = document.querySelectorAll(`input[name="${name}"]`);
+            const errorElement = document.getElementById(`${name}-error`);
+            if (!errorElement) return true; // Skip if no error element exists
+            
+            const isRequired = radioButtons[0].hasAttribute('required');
+            let isChecked = false;
+            
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    isChecked = true;
+                }
+            });
+            
+            if (isRequired && !isChecked) {
+                errorElement.style.display = 'block';
+                return false;
+            } else {
+                errorElement.style.display = 'none';
+                return true;
+            }
+        }
+        
+        // Validate select field
+        function validateSelect(field) {
+            const errorElement = document.getElementById(`${field.id}-error`);
+            if (!errorElement) return true; // Skip if no error element exists
+            
+            field.classList.remove('error-field', 'valid-field');
+            errorElement.style.display = 'none';
+            
+            if (field.hasAttribute('required') && !field.value) {
+                field.classList.add('error-field');
+                errorElement.style.display = 'block';
+                return false;
+            } else if (field.value) {
+                field.classList.add('valid-field');
+            }
+            
+            return true;
+        }
+        
+        // Form submission
+        document.getElementById('realEstateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate all input, textarea, and select fields
+            this.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), textarea, select').forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            // Validate all required radio groups
+            ['contactMethod', 'representation', 'inquiryType'].forEach(name => {
+                if (!validateRadioGroup(name)) {
+                    isValid = false;
+                }
+            });
+            
+            // Validate select fields
+            this.querySelectorAll('select[required]').forEach(select => {
+                if (!validateSelect(select)) {
+                    isValid = false;
+                }
+            });
+            
+            // If form is valid, proceed with submission
+            if (isValid) {
+                // Show loading state
+                const submitButton = this.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    submitButton.textContent = "Submitting...";
+                    submitButton.disabled = true;
+                }
+                
+                // Create FormData from the form
+                const formData = new FormData(this);
+                
+                // Special handling for checkbox groups (amenities)
+                const amenitiesCheckboxes = this.querySelectorAll('input[name="amenities"]:checked');
+                if (amenitiesCheckboxes.length > 0) {
+                    // Remove any existing amenities entry (FormData can have multiple entries with same name)
+                    formData.delete('amenities');
+                    // Add each checked value
+                    amenitiesCheckboxes.forEach(checkbox => {
+                        formData.append('amenities', checkbox.value);
+                    });
+                }
+                
+                // Send form data to server
+                fetch("https://smart-windows-throw.loca.lt/submit", {
+                    method: "POST",
+                    body: formData,
+                    mode: 'cors'
+                })
+                .then(response => {
+                    if (submitButton) {
+                        submitButton.textContent = "Submit Inquiry";
+                        submitButton.disabled = false;
+                    }
+                    
+                    if (response.ok) {
+                        // Successful submission
+                        console.log("Form submitted successfully!");
+                        window.location.href = 'thank-you.html';
+                    } else {
+                        // Server returned an error
+                        console.error("Server error:", response.status);
+                        alert("There was a problem submitting your form. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Submission error:", error);
+                    if (submitButton) {
+                        submitButton.textContent = "Submit Inquiry";
+                        submitButton.disabled = false;
+                    }
+                    alert("Could not connect to the server. Please make sure the server is running.");
+                });
+            } else {
+                // Scroll to the first error
+                const firstError = document.querySelector('.error-field, .error-message[style="display: block"]');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        // Live validation for inputs on blur
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.type !== 'radio' && this.type !== 'checkbox') {
+                    validateField(this);
+                }
+            });
+            
+            // For select elements
+            if (field.tagName === 'SELECT') {
+                field.addEventListener('change', function() {
+                    validateSelect(this);
+                });
+            }
+        });
+        
+        // Live validation for radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                validateRadioGroup(this.name);
+            });
+        });
+    </script>
+</body>
+</html>
