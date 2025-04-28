@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Form script loaded and ready");
 
     // API endpoint URL from localtunnel
-    const API_URL = "https://tired-ghosts-peel.loca.lt";
+    const API_URL = "https://major-mugs-dig.loca.lt";
 
     // Check immediately if the server is available
     checkServerStatus();
