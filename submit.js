@@ -58,25 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Check if server is running first
-        fetch(`${API_URL}/`, { 
-            method: "GET",
+        fetch(`${API_URL}/submit`, {
+            method: "POST",
+            body: formData,
             mode: 'cors'
-        })
-        .then(response => {
-            console.log("Server status before submission:", response.status);
-            if (!response.ok) {
-                throw new Error("Server not responding properly");
-            }
-            
-            // Server is responding, now send the form data
-            console.log(`Sending form data to: ${API_URL}/submit`);
-            return fetch(`${API_URL}/submit`, {
-                method: "POST",
-                body: formData,
-                mode: 'cors'
-            });
-        })
-        .then(response => {
+        }).then(response => {
             console.log("Response status:", response.status);
             console.log("Response headers:", response.headers);
             
